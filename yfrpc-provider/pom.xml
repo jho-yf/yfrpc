@@ -9,8 +9,14 @@
         <version>0.1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>yfrpc-anno</artifactId>
-    <name>Yf Rpc - Annotation</name>
+    <artifactId>yfrpc-provider</artifactId>
+    <name>Yf Rpc - Provider</name>
+    <packaging>pom</packaging>
+
+    <modules>
+        <module>yfrpc-provider-common</module>
+        <module>yfrpc-provider-native</module>
+    </modules>
 
 
 </project>

@@ -9,8 +9,12 @@
         <version>0.1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>yfrpc-anno</artifactId>
-    <name>Yf Rpc - Annotation</name>
-
+    <artifactId>yfrpc-test</artifactId>
+    <packaging>pom</packaging>
+    <name>Yf Rpc - Test</name>
+    <modules>
+        <module>yfrpc-test-provider</module>
+        <module>yfrpc-test-scanner</module>
+    </modules>
 
 </project>

@@ -5,12 +5,11 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>cn.jho.yfrpc</groupId>
-        <artifactId>yfrpc</artifactId>
+        <artifactId>yfrpc-provider</artifactId>
         <version>0.1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>yfrpc-anno</artifactId>
-    <name>Yf Rpc - Annotation</name>
-
+    <artifactId>yfrpc-provider-common</artifactId>
+    <name>Yf Rpc - Provider Common</name>
 
 </project>

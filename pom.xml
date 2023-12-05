@@ -4,7 +4,7 @@
         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>cn.jho</groupId>
+    <groupId>cn.jho.yfrpc</groupId>
     <artifactId>yfrpc</artifactId>
     <version>0.1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
@@ -12,6 +12,9 @@
     <name>Yf Rpc - Parent</name>
     <modules>
         <module>yfrpc-anno</module>
+        <module>yfrpc-common</module>
+        <module>yfrpc-provider</module>
+        <module>yfrpc-test</module>
     </modules>
 
     <properties>
