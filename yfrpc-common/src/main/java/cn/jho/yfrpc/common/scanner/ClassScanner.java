@@ -74,7 +74,7 @@ public class ClassScanner {
      *
      * @param pkgName    扫描的包名
      * @param url        Jar包的url路径
-     * @param pkgDirName 当前包名所属包名
+     * @param pkgDirName 当前包名所属文件名
      * @param recursive  是否递归调用
      * @param classNames 类名列表
      * @throws IOException 读取jar包失败
@@ -93,18 +93,18 @@ public class ClassScanner {
                 name = name.substring(1);
             }
 
-            // 不是在指定包名下，跳过
+            // 不是在指定文件下，跳过
             if (!name.startsWith(pkgDirName)) {
                 continue;
             }
 
             int idx = name.lastIndexOf('/');
-
-            // 如果以"/"为结尾，则是一个包路径
             if (idx != -1) {
+                // 以"/"为结尾，说明是个包
                 pkgName = name.substring(0, idx).replace("/", ".");
             }
 
+            // 递归获取ClassName
             if ((idx != -1 || recursive) && (name.endsWith(CLASS_FILE_SUFFIX) && !entry.isDirectory())) {
                 // 去掉class文件的后缀 ".class"
                 String className = name.substring(pkgName.length() + 1, name.length() - 6);
