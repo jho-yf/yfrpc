@@ -12,4 +12,12 @@
     <artifactId>yfrpc-common</artifactId>
     <name>Yf Rpc - Common</name>
 
+    <dependencies>
+        <dependency>
+            <groupId>cn.jho.yfrpc</groupId>
+            <artifactId>yfrpc-anno</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+    </dependencies>
+
 </project>
