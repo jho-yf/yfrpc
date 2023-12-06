@@ -12,4 +12,12 @@
     <artifactId>yfrpc-provider-native</artifactId>
     <name>Yf Rpc - Provider Native</name>
 
+    <dependencies>
+        <dependency>
+            <groupId>cn.jho.yfrpc</groupId>
+            <artifactId>yfrpc-provider-common</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+    </dependencies>
+
 </project>
