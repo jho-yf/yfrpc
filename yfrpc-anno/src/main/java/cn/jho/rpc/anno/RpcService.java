@@ -29,7 +29,7 @@ public @interface RpcService {
     /**
      * 版本号
      */
-    String vresion() default "1.0.0";
+    String version() default "1.0.0";
 
     /**
      * 服务分组，默认为空

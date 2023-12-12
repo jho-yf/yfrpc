@@ -4,6 +4,9 @@ import java.io.File;
 import java.io.IOException;
 import java.net.JarURLConnection;
 import java.net.URL;
+import java.net.URLDecoder;
+import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.List;
 import java.util.jar.JarEntry;
@@ -15,6 +18,9 @@ import java.util.jar.JarFile;
  * @author JHO xu-jihong@qq.com
  */
 public class ClassScanner {
+
+    protected ClassScanner() {
+    }
 
     /**
      * 文件：扫描当前工程下指定包下的所有类信息
@@ -30,6 +36,43 @@ public class ClassScanner {
      * class文件后缀：扫描的过程中指定需要处理的文件的后缀信息
      */
     private static final String CLASS_FILE_SUFFIX = ".class";
+
+    /**
+     * 扫描指定包下的的所有类信息
+     *
+     * @param pkgName 指定的包名
+     * @return 指定包名下所有类的全限定名集合
+     * @throws IOException 获取指定包下资源失败
+     */
+    public static List<String> getClassNames(String pkgName) throws IOException {
+
+        // 将包名改成路径形式
+        String pkgDir = pkgName.replace(".", "/");
+
+        // 获取包路径下所有资源
+        Enumeration<URL> dirs = Thread.currentThread().getContextClassLoader().getResources(pkgDir);
+
+        List<String> classNames = new ArrayList<>();
+        while (dirs.hasMoreElements()) {
+            URL url = dirs.nextElement();
+            // 获取协议名称
+            String protocol = url.getProtocol();
+
+            // 文件形式
+            if (PROTOCAL_FILE.equals(protocol)) {
+                String filePath = URLDecoder.decode(url.getFile(), StandardCharsets.UTF_8);
+                findAndAddClassesInPkgByFile(pkgName, filePath, true, classNames);
+                continue;
+            }
+
+            // jar包形式
+            if (PROTOCAL_JAR.equals(protocol)) {
+                pkgName = findAndAddClassesInPkgByJar(pkgName, url, pkgDir, true, classNames);
+            }
+        }
+
+        return classNames;
+    }
 
     /**
      * 扫描当前工程中指定包下的所有类信息
@@ -63,7 +106,7 @@ public class ClassScanner {
             } else {
                 // 去掉class文件的后缀 ".class"
                 String className = file.getName().substring(0, file.getName().length() - 6);
-                classNames.add(className);
+                classNames.add(pkgName + "." + className);
             }
         }
 
@@ -108,7 +151,7 @@ public class ClassScanner {
             if ((idx != -1 || recursive) && (name.endsWith(CLASS_FILE_SUFFIX) && !entry.isDirectory())) {
                 // 去掉class文件的后缀 ".class"
                 String className = name.substring(pkgName.length() + 1, name.length() - 6);
-                classNames.add(className);
+                classNames.add(pkgName + "." + className);
             }
         }
 

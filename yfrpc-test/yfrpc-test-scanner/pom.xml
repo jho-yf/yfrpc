@@ -12,4 +12,12 @@
     <artifactId>yfrpc-test-scanner</artifactId>
     <name>Yf Rpc - Test Scanner</name>
 
+    <dependencies>
+        <dependency>
+            <groupId>cn.jho.yfrpc</groupId>
+            <artifactId>yfrpc-common</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+    </dependencies>
+
 </project>
