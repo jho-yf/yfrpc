@@ -15,6 +15,8 @@
         <module>yfrpc-common</module>
         <module>yfrpc-provider</module>
         <module>yfrpc-test</module>
+        <module>yfrpc-constants</module>
+        <module>yfrpc-protocol</module>
     </modules>
 
     <properties>
