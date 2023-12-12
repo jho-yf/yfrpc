@@ -2,7 +2,7 @@ package cn.jho.yfrpc.test.scanner.consumer.service.impl;
 
 import cn.jho.rpc.anno.RpcReference;
 import cn.jho.yfrpc.test.scanner.consumer.service.ConsumerBusinessService;
-import cn.jho.yfrpc.test.scanner.service.DemoService;
+import cn.jho.yfrpc.test.scanner.provider.service.DemoService;
 
 /**
  * <p>ConsumerBusinessServiceImpl class.</p>

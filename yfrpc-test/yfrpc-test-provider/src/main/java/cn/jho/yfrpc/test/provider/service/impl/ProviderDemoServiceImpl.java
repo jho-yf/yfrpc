@@ -1,7 +1,7 @@
-package cn.jho.yfrpc.test.scanner.provider;
+package cn.jho.yfrpc.test.provider.service.impl;
 
 import cn.jho.rpc.anno.RpcService;
-import cn.jho.yfrpc.test.scanner.service.DemoService;
+import cn.jho.yfrpc.test.provider.service.DemoService;
 
 /**
  * <p>ProviderDemoServiceImpl class.</p>

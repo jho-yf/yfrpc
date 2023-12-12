@@ -18,5 +18,13 @@
         <module>yfrpc-provider-native</module>
     </modules>
 
+    <dependencies>
+        <dependency>
+            <groupId>cn.jho.yfrpc</groupId>
+            <artifactId>yfrpc-common</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+    </dependencies>
+
 
 </project>

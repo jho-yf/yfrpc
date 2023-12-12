@@ -19,10 +19,10 @@ public class RpcServiceScanner extends ClassScanner {
     private static final Logger LOG = LoggerFactory.getLogger(RpcServiceScanner.class);
 
     /**
-     * 扫描指定包下带有@{@link RpcService}的所有类
+     * 扫描指定包下带有 @{@link RpcService} 注解的所有类实例
      *
      * @param scanPkg 指定包路径
-     * @return Rpc服务
+     * @return 带有 @{@link RpcService} 注解的所有类实例
      * @throws IOException 获取包路径下所有全限定类名异常
      */
     public static Map<String, Object> scanRpcService(String scanPkg) throws IOException {
@@ -37,18 +37,30 @@ public class RpcServiceScanner extends ClassScanner {
                 Class<?> clazz = Class.forName(className);
                 RpcService rpcService = clazz.getAnnotation(RpcService.class);
                 if (rpcService != null) {
-                    LOG.info("Rpc Service => {}", clazz.getName());
-                    LOG.info(
-                            "Rpc Service Meta => \ninterfaceClass: {} \ninterfaceClassName: {} \nversion: {}\ngroup: {}",
-                            rpcService.interfaceClass(), rpcService.interfaceClassName(),
-                            rpcService.version(), rpcService.group());
+                    String serviceName = getServiceName(rpcService);
+                    String key = serviceName.concat(rpcService.version()).concat(rpcService.group());
+                    handlerMap.put(key, clazz.getDeclaredConstructor().newInstance());
                 }
-            } catch (ClassNotFoundException e) {
+            } catch (Exception e) {
                 LOG.error("Failed to scan classes: {}", e.getMessage(), e);
             }
         }
 
         return handlerMap;
+    }
+
+    private static String getServiceName(RpcService rpcService) {
+        Class<?> clazz = rpcService.interfaceClass();
+        if (clazz == void.class || clazz == Void.class) {
+            return rpcService.interfaceClassName();
+        }
+
+        String serviceName = clazz.getName();
+        if (serviceName.trim().isEmpty()) {
+            serviceName = rpcService.interfaceClassName();
+        }
+
+        return serviceName;
     }
 
 
