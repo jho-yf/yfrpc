@@ -17,6 +17,8 @@
         <module>yfrpc-test</module>
         <module>yfrpc-constants</module>
         <module>yfrpc-protocol</module>
+        <module>yfrpc-serialization</module>
+        <module>yfrpc-codec</module>
     </modules>
 
     <properties>

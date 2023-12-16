@@ -5,18 +5,12 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>cn.jho.yfrpc</groupId>
-        <artifactId>yfrpc</artifactId>
+        <artifactId>yfrpc-serialization</artifactId>
         <version>0.1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>yfrpc-provider</artifactId>
-    <name>Yf Rpc - Provider</name>
-    <packaging>pom</packaging>
-
-    <modules>
-        <module>yfrpc-provider-common</module>
-        <module>yfrpc-provider-native</module>
-    </modules>
+    <artifactId>yfrpc-serialization-api</artifactId>
+    <name>Yf Rpc - Serialization Api</name>
 
     <dependencies>
         <dependency>
@@ -24,12 +18,6 @@
             <artifactId>yfrpc-common</artifactId>
             <version>${project.version}</version>
         </dependency>
-        <dependency>
-            <groupId>cn.jho.yfrpc</groupId>
-            <artifactId>yfrpc-codec</artifactId>
-            <version>${project.version}</version>
-        </dependency>
     </dependencies>
-
 
 </project>

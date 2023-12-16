@@ -8,7 +8,7 @@ package cn.jho.yfrpc.constants;
 public class RpcConstants {
 
     private RpcConstants() {
-        
+
     }
 
     /**
@@ -80,6 +80,11 @@ public class RpcConstants {
      * eureka
      */
     public static final String REGISTRY_CENTER_EUREKA = "eureka";
+
+    /**
+     * 序列化类型最大长度16
+     */
+    public static final int MAX_SERIALIZER_TYPE_COUNT = 16;
 
     /**
      * protostuff 序列化

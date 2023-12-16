@@ -18,6 +18,12 @@
             <artifactId>yfrpc-anno</artifactId>
             <version>${project.version}</version>
         </dependency>
+
+        <dependency>
+            <groupId>cn.jho.yfrpc</groupId>
+            <artifactId>yfrpc-constants</artifactId>
+            <version>${project.version}</version>
+        </dependency>
     </dependencies>
 
 </project>

@@ -9,27 +9,20 @@
         <version>0.1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>yfrpc-provider</artifactId>
-    <name>Yf Rpc - Provider</name>
-    <packaging>pom</packaging>
-
-    <modules>
-        <module>yfrpc-provider-common</module>
-        <module>yfrpc-provider-native</module>
-    </modules>
+    <artifactId>yfrpc-codec</artifactId>
+    <name>Yf Rpc - Codec</name>
 
     <dependencies>
         <dependency>
             <groupId>cn.jho.yfrpc</groupId>
-            <artifactId>yfrpc-common</artifactId>
+            <artifactId>yfrpc-serialization-jdk</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>cn.jho.yfrpc</groupId>
-            <artifactId>yfrpc-codec</artifactId>
+            <artifactId>yfrpc-protocol</artifactId>
             <version>${project.version}</version>
         </dependency>
     </dependencies>
-
 
 </project>

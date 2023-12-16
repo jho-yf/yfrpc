@@ -1,5 +1,7 @@
 package cn.jho.yfrpc.provider.common.server.base;
 
+import cn.jho.yfrpc.codec.RpcDecoder;
+import cn.jho.yfrpc.codec.RpcEncoder;
 import cn.jho.yfrpc.provider.common.handler.RpcProviderHandler;
 import cn.jho.yfrpc.provider.common.server.api.Server;
 import io.netty.bootstrap.ServerBootstrap;
@@ -9,8 +11,6 @@ import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelOption;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
-import io.netty.handler.codec.string.StringDecoder;
-import io.netty.handler.codec.string.StringEncoder;
 import java.util.HashMap;
 import java.util.Map;
 import org.slf4j.Logger;
@@ -59,9 +59,8 @@ public class BaseServer implements Server {
                     @Override
                     protected void initChannel(Channel channel) throws Exception {
                         channel.pipeline()
-                                // TODO 预留编解码，用于自定义协议
-                                .addLast(new StringDecoder())
-                                .addLast(new StringEncoder())
+                                .addLast(new RpcEncoder())
+                                .addLast(new RpcDecoder())
                                 .addLast(new RpcProviderHandler(handlerMap));
                     }
                 }).option(ChannelOption.SO_BACKLOG, 128)
