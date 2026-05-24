@@ -19,6 +19,13 @@ public class RpcReferenceScanner extends RpcServiceScanner {
 
     private static final Logger LOG = LoggerFactory.getLogger(RpcReferenceScanner.class);
 
+    /**
+     * 扫描 {@link cn.jho.rpc.anno.RpcReference} 注解
+     *
+     * @param scanPkg 指定包路径
+     * @return RPC 带有 @{@link RpcReference} 注解的所有类实例
+     * @throws IOException 获取包路径下所有全限定类名异常
+     */
     public static Map<String, Object> scanRpcReference(String scanPkg) throws IOException {
         Map<String, Object> handerMap = new HashMap<>();
 

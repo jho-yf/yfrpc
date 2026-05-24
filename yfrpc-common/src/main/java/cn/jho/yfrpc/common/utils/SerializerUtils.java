@@ -16,6 +16,11 @@ public class SerializerUtils {
      */
     public static final String PADDING_STRING = "0";
 
+    /**
+     * 约定序列化类型最大长度为 16
+     */
+    public static final int MAX_SERIALIZATION_TYPE_COUNT = 16;
+
     private SerializerUtils() {
     }
 
@@ -36,9 +41,15 @@ public class SerializerUtils {
         return sb.toString();
     }
 
-    public static String substring(String str) {
+    /**
+     * 字符串去 0 操作
+     *
+     * @param str 原始字符串
+     * @return 去 0 后的字符串
+     */
+    public static String subString(String str) {
         str = transNullToEmpty(str);
-        return str.replace(SERIALIZER_TYPE_PADDING_STRING, "");
+        return str.replace(PADDING_STRING, "");
     }
 
     public static String transNullToEmpty(String str) {

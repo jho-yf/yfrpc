@@ -43,11 +43,12 @@ public class RpcDecoder extends ByteToMessageDecoder implements RpcCodec {
             throw new UnsupportedOperationException("Unsupported for Rpc Type '" + msgType + "'");
         }
 
-        byte status = byteBuf.readByte();
-        long requestId = byteBuf.readLong();
+        final byte status = byteBuf.readByte();
+        final long requestId = byteBuf.readLong();
 
         ByteBuf serializationTypeByteBuf = byteBuf.readBytes(MAX_SERIALIZER_TYPE_COUNT);
-        String serializationType = SerializerUtils.substring(serializationTypeByteBuf.toString(StandardCharsets.UTF_8));
+        final String serializationType = SerializerUtils.subString(
+                serializationTypeByteBuf.toString(StandardCharsets.UTF_8));
 
         int dataLen = byteBuf.readInt();
         if (byteBuf.readableBytes() < dataLen) {
@@ -86,8 +87,8 @@ public class RpcDecoder extends ByteToMessageDecoder implements RpcCodec {
                     list.add(protocol);
                 }
             }
-            case HEARTBEAT -> {
-            }
+            case HEARTBEAT -> throw new UnsupportedOperationException("rpc type 'heartbeat' not implements");
+            default -> throw new IllegalStateException("Unknown rpc type '" + rpcType + "'");
         }
     }
 

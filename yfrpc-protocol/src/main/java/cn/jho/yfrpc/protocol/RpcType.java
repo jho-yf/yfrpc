@@ -32,6 +32,12 @@ public enum RpcType {
         return type;
     }
 
+    /**
+     * 根据 type 编码获取枚举
+     *
+     * @param type type 编码
+     * @return {@link RpcType}
+     */
     public static RpcType findByType(int type) {
         for (RpcType value : RpcType.values()) {
             if (value.getType() == type) {

@@ -19,7 +19,7 @@ public class RpcServiceScanner extends ClassScanner {
     private static final Logger LOG = LoggerFactory.getLogger(RpcServiceScanner.class);
 
     /**
-     * 扫描指定包下带有 @{@link RpcService} 注解的所有类实例
+     * 扫描指定包下带有 {@link RpcService} 注解的所有类实例
      *
      * @param scanPkg 指定包路径
      * @return 带有 @{@link RpcService} 注解的所有类实例

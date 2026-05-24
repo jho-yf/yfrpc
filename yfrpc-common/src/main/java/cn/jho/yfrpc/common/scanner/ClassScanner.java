@@ -136,19 +136,16 @@ public class ClassScanner {
                 name = name.substring(1);
             }
 
+            int idx = name.lastIndexOf('/');
             // 不是在指定文件下，跳过
-            if (!name.startsWith(pkgDirName)) {
+            // 不是以"/"为结尾，说明不是个包，跳过
+            if (!name.startsWith(pkgDirName) || idx == -1) {
                 continue;
             }
 
-            int idx = name.lastIndexOf('/');
-            if (idx != -1) {
-                // 以"/"为结尾，说明是个包
-                pkgName = name.substring(0, idx).replace("/", ".");
-            }
-
             // 递归获取ClassName
-            if ((idx != -1 || recursive) && (name.endsWith(CLASS_FILE_SUFFIX) && !entry.isDirectory())) {
+            pkgName = name.substring(0, idx).replace("/", ".");
+            if (recursive && name.endsWith(CLASS_FILE_SUFFIX) && !entry.isDirectory()) {
                 // 去掉class文件的后缀 ".class"
                 String className = name.substring(pkgName.length() + 1, name.length() - 6);
                 classNames.add(pkgName + "." + className);
